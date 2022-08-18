@@ -5,6 +5,8 @@ from .models import Cliente, TipoClientes
 from Cuentas.models import Cuenta
 from Tarjetas.models import Tarjetas
 from django.contrib.auth.decorators import login_required
+from .serializers import ClientSerializer
+from rest_framework import viewsets
 
 # Create your views here.
 
@@ -34,3 +36,7 @@ def logout(request):
 def inversiones(request):
     userobj = get_object_or_404(User, username=request.user)
     return render(request, 'Clientes/inversiones.html', {'name' : f'{userobj.first_name} {userobj.last_name[0]}'})
+
+class ClientViewSet(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClientSerializer

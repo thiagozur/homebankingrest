@@ -25,4 +25,5 @@ urlpatterns = [
     path('prestamos/', include('Prestamos.urls', namespace='Prestamos')),
     path('', include('Login.urls', namespace='Login')),
     path('createclients/', views.createclients, name='createclients'),
+    path('api-auth/', include('rest_framework.urls')),
 ]
